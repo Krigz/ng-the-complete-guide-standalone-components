@@ -11,6 +11,6 @@ if (environment.production) {
 
 bootstrapApplication(AppComponent, {
     providers: [
-      // AnalyticsService
+      // AnalyticsService // if you don't use the "providedIn: root" syntax in the service
     ]
   });
