@@ -1,6 +1,7 @@
-import { enableProdMode } from '@angular/core';
+import { enableProdMode, importProvidersFrom } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 
+import { AppRoutingModule } from './app/app-routing.module';
 import { AppComponent } from './app/app.component';
 // import { AnalyticsService } from './app/shared/analytics.service';
 import { environment } from './environments/environment';
@@ -10,7 +11,8 @@ if (environment.production) {
 }
 
 bootstrapApplication(AppComponent, {
-    providers: [
-      // AnalyticsService // if you don't use the "providedIn: root" syntax in the service
-    ]
-  });
+  providers: [
+    // AnalyticsService,
+    importProvidersFrom(AppRoutingModule) // makes the standalone root cmp (and thus the ng app) aware of our routes
+  ],
+});
